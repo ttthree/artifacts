@@ -9,7 +9,7 @@ Use this skill when the user wants to find, reopen, or identify a past Eureka ta
 
 ## Workflow
 
-Use the agent's own search and reading tools as the primary implementation. The goal is to combine fast local grep with model judgment, so the agent can handle fuzzy descriptions, synonyms, partial memories, and related concepts better than a fixed scoring script.
+Use the agent's own search and reading tools as the implementation. The goal is to combine fast local grep with model judgment, so the agent can handle fuzzy descriptions, synonyms, partial memories, and related concepts.
 
 1. Identify session roots. Search current Eureka config first, then legacy config:
 
@@ -70,16 +70,6 @@ Present results like a web search engine:
 ```
 
 Include 3-8 results by default. If no strong result exists, say that clearly and show the best weak candidates only if they may help.
-
-## Optional Script Fallback
-
-This skill includes `scripts/search_sessions.py` as a quick baseline search helper. Use it only as a fallback, sanity check, or broad first pass. Do not rely on it as the primary search when the user's request is fuzzy.
-
-```bash
-python3 scripts/search_sessions.py "user's search description"
-```
-
-The script searches both `~/.eureka/workspaces` and legacy `~/.craft-agent/workspaces`, deduplicates matching workspace/session ids, and prints Markdown links.
 
 ## Guardrails
 
